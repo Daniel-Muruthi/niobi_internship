@@ -1,0 +1,461 @@
+:root {
+    --niobi-primary: #1a365d;
+    --niobi-secondary: #2b77e7;
+    --niobi-accent: #00d9ff;
+    --niobi-success: #38a169;
+    --niobi-warning: #ed8936;
+    --niobi-danger: #e53e3e;
+    --niobi-dark: #1a202c;
+    --niobi-light: #f7fafc;
+    --niobi-gray: #718096;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-niobi: linear-gradient(135deg, var(--niobi-primary) 0%, var(--niobi-secondary) 100%);
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--gradient-niobi);
+    color: white;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.niobi-logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, var(--niobi-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* Main Container */
+.main-container {
+    background: white;
+    margin: -2rem auto 2rem;
+    max-width: 1400px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+}
+
+/* Navigation Tabs */
+.nav-tabs-container {
+    background: var(--niobi-light);
+    padding: 1rem 2rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nav-tabs .nav-link {
+    color: var(--niobi-gray);
+    border: none;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-tabs .nav-link.active {
+    background: white;
+    color: var(--niobi-primary);
+    border-bottom: 3px solid var(--niobi-secondary);
+}
+
+.nav-tabs .nav-link:hover {
+    background: rgba(43, 119, 231, 0.1);
+    color: var(--niobi-secondary);
+}
+
+/* Upload Section */
+.upload-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.file-upload-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(43, 119, 231, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.file-upload-card:hover::before {
+    left: 100%;
+}
+
+.file-upload-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--niobi-secondary);
+}
+
+.file-upload-box {
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #f8fafc;
+    position: relative;
+}
+
+.file-upload-box:hover {
+    border-color: var(--niobi-secondary);
+    background: rgba(43, 119, 231, 0.05);
+}
+
+.file-upload-box.dragover {
+    border-color: var(--niobi-success);
+    background: rgba(56, 161, 105, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--niobi-gray);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.file-upload-box:hover .upload-icon {
+    color: var(--niobi-secondary);
+    transform: scale(1.1);
+}
+
+/* Results Section */
+.results-section {
+    padding: 3rem 2rem;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--niobi-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(43, 119, 231, 0.1) 0%, transparent 70%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--niobi-secondary);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--niobi-primary);
+}
+
+.stat-label {
+    color: var(--niobi-gray);
+    font-weight: 500;
+}
+
+/* Category Cards */
+.category-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+.category-header {
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-header:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.matched { border-left: 5px solid var(--niobi-success); }
+.internal-only { border-left: 5px solid var(--niobi-warning); }
+.provider-only { border-left: 5px solid var(--niobi-danger); }
+
+.matched .category-header { background: linear-gradient(135deg, rgba(56, 161, 105, 0.05), rgba(56, 161, 105, 0.02)); }
+.internal-only .category-header { background: linear-gradient(135deg, rgba(237, 137, 54, 0.05), rgba(237, 137, 54, 0.02)); }
+.provider-only .category-header { background: linear-gradient(135deg, rgba(229, 62, 62, 0.05), rgba(229, 62, 62, 0.02)); }
+
+/* Transaction Display */
+.transaction-item {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.transaction-item:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.amount-mismatch {
+    background: rgba(229, 62, 62, 0.05);
+    border-left: 4px solid var(--niobi-danger);
+    position: relative;
+}
+
+.amount-mismatch::before {
+    content: '⚠️';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+/* Buttons */
+.btn-niobi {
+    background: var(--gradient-niobi);
+    border: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-niobi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-niobi:hover::before {
+    left: 100%;
+}
+
+.btn-niobi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(43, 119, 231, 0.3);
+    color: white;
+}
+
+.btn-export {
+    background: var(--niobi-success);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.btn-export:hover {
+    background: #2f855a;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Loading Animation */
+.loading-section {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: var(--gradient-niobi);
+    transition: width 0.3s ease;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid var(--niobi-secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        margin: -1rem 1rem 1rem;
+        border-radius: 16px;
+    }
+    
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .niobi-logo {
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-section,
+    .results-section {
+        padding: 2rem 1rem;
+    }
+    
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* Utility Classes */
+.hidden { display: none !important; }
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-success {
+    background: rgba(56, 161, 105, 0.1);
+    color: var(--niobi-success);
+}
+
+.status-warning {
+    background: rgba(237, 137, 54, 0.1);
+    color: var(--niobi-warning);
+}
+
+.status-danger {
+    background: rgba(229, 62, 62, 0.1);
+    color: var(--niobi-danger);
+}
