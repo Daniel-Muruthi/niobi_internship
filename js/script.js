@@ -261,10 +261,17 @@ function showResults() {
 
 function updateSummaryStats() {
     const summaryStats = document.getElementById('summaryStats');
-    const { matched, internalOnly, providerOnly, totalInternal, totalProvider, matchRate } = reconciliationResults;
-    
+    const { matched, internalOnly, providerOnly, matchRate } = reconciliationResults;
+
+    // ✅ CHANGED: compute unique transaction references
+    const allRefs = [
+        ...internalData.map(t => t.transaction_reference),
+        ...providerData.map(t => t.transaction_reference)
+    ];
+    const uniqueCount = new Set(allRefs).size;
+
     const amountMismatches = matched.filter(m => !m.amountMatch).length;
-    
+
     summaryStats.innerHTML = `
         <div class="stat-card">
             <div class="stat-number">${matched.length}</div>
@@ -279,16 +286,16 @@ function updateSummaryStats() {
             <div class="stat-label">Provider Only</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">${matchRate.toFixed(1)}%</div>
-            <div class="stat-label">Match Rate</div>
-        </div>
-        <div class="stat-card">
             <div class="stat-number">${amountMismatches}</div>
             <div class="stat-label">Amount Mismatches</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">${totalInternal + totalProvider}</div>
-            <div class="stat-label">Total Transactions</div>
+            <div class="stat-number">${uniqueCount}</div>
+            <div class="stat-label">Total Unique Transactions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">${matchRate.toFixed(1)}%</div>
+            <div class="stat-label">Match Rate</div>
         </div>
     `;
 }
